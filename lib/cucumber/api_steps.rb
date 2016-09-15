@@ -44,7 +44,7 @@ When /^I send a (GET|PATCH|POST|PUT|DELETE) request (?:for|to) "([^\"]*)"(?: wit
     if input.class == Cucumber::MultilineArgument::DataTable
       request_json = input.rows_hash
     else
-      request_json = StringIO.new input
+      request_json = JSON.parse(StringIO.new(input).string)
     end
   end
   case request_type
