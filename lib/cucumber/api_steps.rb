@@ -50,15 +50,15 @@ When /^I send a (GET|PATCH|POST|PUT|DELETE) request (?:for|to) "([^\"]*)"(?: wit
   headers = { 'CONTENT_TYPE' => 'application/json' }
   case request_type
   when 'GET'
-    get path, request_json, headers
+    get path, request_json.to_json, headers
   when 'PATCH'
-    patch path, request_json, headers
+    patch path, request_json.to_json, headers
   when 'POST'
-    post path, request_json, headers
+    post path, request_json.to_json, headers
   when 'PUT'
-    put path, request_json, headers
+    put path, request_json.to_json, headers
   when 'DELETE'
-    delete path, request_json, headers
+    delete path, request_json.to_json, headers
   end
 end
 
