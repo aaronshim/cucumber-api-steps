@@ -47,7 +47,7 @@ When /^I send a (GET|PATCH|POST|PUT|DELETE) request (?:for|to) "([^\"]*)"(?: wit
       request_json = JSON.parse(StringIO.new(input).string)
     end
   end
-  headers = { 'Content-Type' => 'application/json' }
+  headers = { 'CONTENT_TYPE' => 'application/json' }
   case request_type
   when 'GET'
     get path, request_json, headers
