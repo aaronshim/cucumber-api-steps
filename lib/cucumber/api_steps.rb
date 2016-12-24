@@ -44,21 +44,21 @@ When /^I send a (GET|PATCH|POST|PUT|DELETE) request (?:for|to) "([^\"]*)"(?: wit
     if input.class == Cucumber::MultilineArgument::DataTable
       request_json = input.rows_hash
     else
-      request_json = JSON.parse(StringIO.new(input).string)
+      request_json = StringIO.new(input)
     end
   end
-  headers = { 'CONTENT_TYPE' => 'application/json' }
+  header 'Content-Type', 'application/json'
   case request_type
   when 'GET'
-    get path, request_json.to_json, headers
+    get path, request_json
   when 'PATCH'
-    patch path, request_json.to_json, headers
+    patch path, request_json
   when 'POST'
-    post path, request_json.to_json, headers
+    post path, request_json
   when 'PUT'
-    put path, request_json.to_json, headers
+    put path, request_json
   when 'DELETE'
-    delete path, request_json.to_json, headers
+    delete path, request_json
   end
 end
 
